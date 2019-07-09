@@ -7,6 +7,15 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+  var result = n;
+  if (n > 1) {
+    result *= factorial(n-1);
+  } else if (n === 0) {
+  	result = 1;
+  } else if (n < 0) {
+  	result = null;
+  }
+  return result;
 };
 
 // 2. Compute the sum of an array of integers.

@@ -21,26 +21,66 @@ var factorial = function(n) {
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+  let result = 0;
+  if (array.length > 0) {
+    result += array[0];
+    result += sum(array.slice(1));
+  }
+	return result;
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+  let result = 0;
+  if (array.length > 0) {
+    if (typeof array[0] === 'number') {
+      result += array[0];
+      result += arraySum(array.slice(1));
+    } else {
+      result += arraySum(array[0]);
+      result += arraySum(array.slice(1));
+    }
+  }
+  return result;
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  let result = false;
+  if (n === 0) {
+    result = true;
+  } else if (n === 1 || n === -1) {
+    result = false;
+  } else {
+    if (n >= 2) {
+      result = isEven(n-2);
+    } else if (n <= -2) {
+      result = isEven(n+2);
+    }
+  }
+  return result;
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  let result = 0;
+  if (n > 0) {
+    result = n - 1;
+    result += sumBelow(n - 1);
+  } else if (n < 0) {
+    result = n + 1;
+    result += sumBelow(n + 1);
+  }
+  return result;
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+
 };
 
 // 7. Compute the exponent of a number.
